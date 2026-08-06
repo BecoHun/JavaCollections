@@ -12,4 +12,15 @@ Which of the following classes returns unique elements in sorted order?
 TreeSet
 The uniqueness of elements and sorting are basic priorities of tree sets.
 
+Which of the code fragments will compile successfully, given the class description below?
+class Old {
+    public static Object get(Set set) {
+        return set.toArray();
+    }
+}
+Object o = Old.get(new LinkedHashSet());
+Object o = Old.get(new LinkedHashSet <Object>());
+String[] s = (String[])Old.get(new LinkedHashSet<String>());
+The toArray() method converts a collection into an array. The collection may or may not be parameterized. The array element type corresponds to the collection element type. The get() method of the Old class returns an array via the Object supertype—polymorphism comes into play here. The return value can be cast to an array again, given the type of elements.
+
 
