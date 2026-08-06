@@ -1,0 +1,15 @@
+Which of the following statements regarding the Set<E> interface are true?
+Set<E> extends the Collection<E> interface.
+Set<E> does not allow duplicate elements.
+All methods defined in Set<E> are also defined in Collection<E>.
+
+Which of the following collections do not accept duplicates?
+Set
+SortedSet
+The absence of duplicates is supported by all types of sets.
+
+Which of the following classes returns unique elements in sorted order?
+TreeSet
+The uniqueness of elements and sorting are basic priorities of tree sets.
+
+
