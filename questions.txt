@@ -1,17 +1,21 @@
+1.
 Which of the following statements regarding the Set<E> interface are true?
 Set<E> extends the Collection<E> interface.
 Set<E> does not allow duplicate elements.
 All methods defined in Set<E> are also defined in Collection<E>.
 
+2.
 Which of the following collections do not accept duplicates?
 Set
 SortedSet
 The absence of duplicates is supported by all types of sets.
 
+3.
 Which of the following classes returns unique elements in sorted order?
 TreeSet
 The uniqueness of elements and sorting are basic priorities of tree sets.
 
+4.
 Which of the code fragments will compile successfully, given the class description below?
 class Old {
     public static Object get(Set set) {
@@ -26,5 +30,11 @@ The collection may or may not be parameterized.
 The array element type corresponds to the collection element type.
 The get() method of the Old class returns an array via the Object supertype—polymorphism comes into play here.
 The return value can be cast to an array again, given the type of elements.
+
+5.
+Which of the following statements about maps are true?
+A map is a set of keys associated with a set of objects.
+Keys cannot have duplicates.
+A map is a set of key-value pairs in which keys identify values/objects. Keys must be unique, and only one value/object can be associated with a key.
 
 
