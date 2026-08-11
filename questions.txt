@@ -42,6 +42,23 @@ Which of the following methods are defined in the Map<K,V> interface?
 Collection<V> values()
 void clear()
 V get(Object k)
-The values(), clear(), and get() methods are described in the Map interface. The put() method is used to add elements to the map, not the add() method. And the map's remove() method returns the object to be removed, not a Boolean value.
+The values(), clear(), and get() methods are described in the Map interface.
+The put() method is used to add elements to the map, not the add() method. And the map's remove() method returns the object to be removed, not a Boolean value.
+
+7.
+What will be the result of running the following code fragment?
+Map<Integer,String> map = new HashMap<>();
+map.put(1, "one");
+map.put(2, "two");
+map.put(3, "three");
+for (Map.Entry<Integer, String> elem : map.entrySet()){ 
+    System.out.print(elem.getKey() + ":" + elem.getValue() + "; ");
+}
+Compilation is successful, and the code runs fine.
+The map is created, and elements are added to it successfully.
+The entrySet() method of the Map interface returns a set of key-value entries of the Map.
+Entry type, so this set can be iterated with a for-each loop.
+The getKey() and getValue() methods of the Map. Entry interface allow you to get the key and the object of the current entry, respectively.
+
 
 
