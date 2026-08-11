@@ -37,4 +37,11 @@ A map is a set of keys associated with a set of objects.
 Keys cannot have duplicates.
 A map is a set of key-value pairs in which keys identify values/objects. Keys must be unique, and only one value/object can be associated with a key.
 
+6.
+Which of the following methods are defined in the Map<K,V> interface?
+Collection<V> values()
+void clear()
+V get(Object k)
+The values(), clear(), and get() methods are described in the Map interface. The put() method is used to add elements to the map, not the add() method. And the map's remove() method returns the object to be removed, not a Boolean value.
+
 
