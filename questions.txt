@@ -61,4 +61,58 @@ Entry type, so this set can be iterated with a for-each loop.
 The getKey() and getValue() methods of the Map. Entry interface allow you to get the key and the object of the current entry, respectively.
 
 
+8.
+Which classes support iteration of elements in insertion order?
+LinkedHashSet
+LinkedHashMap
+Yes, these classes implement a hash table and have a linked list structure.
+This default list captures the elements in the order they were added.
+
+9.
+What will be the result of running the following code fragment?
+import java.util.HashMap;
+import java.util.Map;
+
+class Task {
+    private String name;
+    Task(String name) {
+        this.name = name;
+    }
+    public boolean equals(Object o) {
+        return ( (Task)o).name == this.name;
+    }
+    //  public int hashCode() {    return 42;    }
+}
+class MapDemo {
+    public static void main(String[] args) {
+        Map <Task, String> map = new HashMap<>();
+        Task task = new Task("pay");
+        Task task1 = new Task("pay");
+        Task task2 = new Task("job");
+        map.put(task, "shop");
+        map.put(task1, "bill");
+        map.put(task2, "clean");
+        System.out.println(map.size());
+    }
+}
+A collection size of 3
+If you uncomment the hashCode() method, the collection size will be 2.
+When the hashCode() method of the Task class is commented out, the implementation inherited from the Object class is used.
+In this case, the hash code is defined as the address in the memory where the object is located.
+Therefore, objects task and task1 will be hashed into different buckets, and both will be added to the collection.
+When the hashCode() method is uncommented, task and task1 are hashed into the same bucket, and a collision occurs.
+When the collision is resolved, they are defined as the same key, and the value is replaced by the key.
+
+10.
+What will be the result of running the following code fragment?
+Map<Integer, String> map = new LinkedHashMap<>(); 
+map.put(1, "one"); 
+map.put(2, "two"); 
+map.put(3, "three"); 
+map.put(1, "newOne"); 
+System.out.println(map);
+{1=newOne, 2=two, 3=three}
+By default, the list in the LinkedHashMap is maintained in the order in which pairs are added.
+However, if the key already exists, the value is replaced, and the order of the elements in the list does not change.
+
 
