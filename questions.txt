@@ -115,4 +115,41 @@ System.out.println(map);
 By default, the list in the LinkedHashMap is maintained in the order in which pairs are added.
 However, if the key already exists, the value is replaced, and the order of the elements in the list does not change.
 
+11.
+Which statements about the SortedMap<K,V> and NavigableMap<K,V> interfaces are true?
+The NavigableMap interface allows you to find pairs by closest matches for given keys.
+The SortedMap<K,V> interface sorts keys contained in a map.
+SortedMap orders keys naturally using Comparator.
+The Navigable interface further searches for elements by the closest matches for given keys.
+The HashMap class does not implement the NavigableMap interface because it does not store objects in order.
+The firstKey() method returns the key with the smallest value.
+
+12.
+What will be the result of the code given below?
+import java.util.*;
+public class Quest {
+    public static void main(String[] args) {
+        SortedMap<String, Number> nmap = new TreeMap<>();
+        nmap.put("one", 1); 
+        nmap.put("two", 2);
+        nmap.put("three", 3); 
+        nmap.put("four", 4);
+        Map<String, Number> map = nmap.headMap("three");
+        System.out.println(map);
+    }
+}
+{four=4, one=1}
+The tree map is a tree sorted by key in natural order by key.
+Its headMap method returns a map only with keys less than the specified one, thus yielding pairs with the keys "one" and "four."
+
+13.
+What will be the result of the following code fragment?
+Map<Integer, Integer> map = new TreeMap<>();
+map.put(1,1);
+map.put(0,10);
+map.put(null,0);
+System.out.println(map);
+A runtime error of the NullPointerException
+The key cannot be null because, when added to an ordered tree map, the values of the keys are compared.
+
 
