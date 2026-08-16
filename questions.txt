@@ -152,4 +152,72 @@ System.out.println(map);
 A runtime error of the NullPointerException
 The key cannot be null because, when added to an ordered tree map, the values of the keys are compared.
 
+14.
+Which of the following is the correct way to declare the variable of the EnumMap type given in the code fragment below?
+enum Type {
+    ONE, TWO
+}
+EnumMap<Type, String> enumMap1 = new EnumMap<>(Type.class);
+To create a new empty enum map, you need to specify the type of parameter for the key—the enum type—and pass the constructor an object that describes the key type.
+In this case, the key type is Type, and the object is Type.class.
+
+15.
+What will be the result of running the code below?
+class WeakKey {}
+public class WeakHashMapDemo  {
+    public static void main(String[] args) throws InterruptedException {
+        Map<WeakKey, String> weakMap = new WeakHashMap<>();
+        WeakKey key = new WeakKey();
+        WeakKey key1 = new WeakKey();
+        WeakKey key2 = new WeakKey();
+        weakMap.put(key, "s0");
+        weakMap.put(key1, "s1");
+        weakMap.put(key2, "s2");
+        System.out.print(gcAndSize(weakMap));
+        weakMap.put(null, "s");
+        System.out.print(" " + gcAndSize(weakMap));
+        key1 = key2 = null;
+        System.out.print(" " + gcAndSize(weakMap));
+    }
+    static int gcAndSize(Map<WeakKey, String> map) throws InterruptedException {
+        System.gc();
+        Thread.sleep(1000);
+        return map.size();
+    }
+}
+3 4 2
+The WeakKey class inherits from the Object class.
+Its objects can be created and used as keys in a map.
+Null keys can be added to a WeakHashMap.
+When external key references are no longer used, such keys will be removed from the map by the garbage collector.
+
+16.
+What will be the result of running the code below?
+class WeakKey {}
+public class WeakHashMapDemo {
+    public static void main(String[] args) throws InterruptedException {
+        Map<WeakKey, Integer> weakMap = new WeakHashMap<>();
+        WeakKey key1 = new WeakKey();
+        WeakKey key2 = new WeakKey();
+        weakMap.put(key1, 11);
+        weakMap.put(key2, 21);
+        Iterator<WeakKey> iterator = weakMap.keySet().iterator();
+        System.out.print(gcAndSize(weakMap));
+        key1 = null;
+        System.out.print(" " + gcAndSize(weakMap));
+        System.out.print(" " + iterator.hasNext());
+    }
+    static int gcAndSize(Map<WeakKey, Integer> map) throws InterruptedException {
+        System.gc();
+        Thread.sleep(1000);
+        return map.size();
+    }
+}
+2 1 true
+When you get an iterator to iterate over the keys, the WeakHashMap contains two entries.
+The map then changes structurally as one of the keys is discarded since it is not used outside the collection.
+The keys set also changes, leaving only one element.
+However, the iterator on it works correctly because the keys set is a hash table (a one-dimensional array), the reference to which remains unchanged.
+Therefore, calling the hasNext() iterator method returns true.
+
 
