@@ -220,4 +220,51 @@ The keys set also changes, leaving only one element.
 However, the iterator on it works correctly because the keys set is a hash table (a one-dimensional array), the reference to which remains unchanged.
 Therefore, calling the hasNext() iterator method returns true.
 
+17.
+Which of the following statements about the legacy collections are true?
+All these collections are synchronized, which makes them slower compared to modern collections.
+The Vector<E> class is not memory efficient because it automatically doubles the size limit when it is reached.
+Legacy collections were originally created synchronized for their use in multithreaded applications, but they were also used in single-threaded applications.
+Synchronization makes applications slower.
+The Vector‹E› class is simply a list implemented in an array that grows in size without regard to the possible increase in the number of elements.
+
+18.
+Which statements about the differences between legacy and modern collections are true?
+The Hashtable<K,V> collection does not allow null keys and null values, unlike HashMap<K,V>.
+Both the Vector<E> class and the ArrayList<E> class use the Iterator<E> interface for iteration.
+A collection of the Stack‹E› type is iterated to the top of the stack and also allows access to elements by index.
+Both Vector‹E› and ArrayList‹E› can use the Iteration‹E› interface to iterate over elements.
+The Hashtable‹K,V› collection does not allow null keys and null values.
+
+19.
+What will be the result of executing the following code?
+import java.util.Enumeration;
+import java.util.Stack;
+public class LegacyDemo {
+    public static void main(String[] args) {
+        Stack<Number> stack = new Stack<>();
+        stack.push(0);
+        stack.push(10);
+        stack.push(20);
+        stack.add(30);
+        stack.add(2, 25);
+        Enumeration<Number> iter = stack.elements();
+        while (iter.hasMoreElements()) {
+            System.out.print(iter.nextElement() + " ");
+        }
+    }
+}
+0 10 25 20 30
+The Stack‹E› collection allows you to add objects with the push method to the top of the stack and the add method to an existing position. 
+An iterator of type Enumeration‹E› iterates over the elements of the stack from the first element placed on it to its top.
+Since the numbering starts from 0, then the value 25 will be the third in order from the beginning.
+So the result is 0 10 25 20 30
+
+20.
+Which of the following statements about the Hashtable<K,V> class are true?
+Hashtable<K,V> is synchronized, while a HashMap<K,V> is not.
+Hashtable<K,V> cannot have null values or null keys.
+The Hashtable‹K,V› class is synchronized and cannot use null as a key or value, unlike its newer HashMap‹K,V› version. 
+Also, both of these collections store elements unordered and their behavior does not depend on the garbage collector.
+
 
