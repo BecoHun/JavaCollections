@@ -267,4 +267,58 @@ Hashtable<K,V> cannot have null values or null keys.
 The Hashtable‹K,V› class is synchronized and cannot use null as a key or value, unlike its newer HashMap‹K,V› version. 
 Also, both of these collections store elements unordered and their behavior does not depend on the garbage collector.
 
+21.
+Which of the following implements or inherits the Properties class?
+Hashtable
+The Properties class only inherits the Hashtable class because the properties are stored as a hash map.
+
+22.
+What is the result of compiling and running the code below considering the contents of the base.properties file given?
+public class PropertiesQuest1 {
+    public static void main(String[] args) throws IOException {
+        Properties props = new Properties();
+        props.load(new FileReader("base.properties"));
+        String key1 = props.getProperty("key1");
+        String key2 = props.getProperty("key2");
+        String key3 = props.getProperty("key3");
+        System.out.print(" key1:" + key1);
+        System.out.print(" key2:" + key2);
+        System.out.print(" key3:" + key3);
+    }
+}
+File base.properties
+key1=n
+key2=o
+key2=w
+key4=a
+key5=r
+key1:n key2:w key3:null
+For the property named "key1", we get the value "n". 
+For the "key2" property, we get the value "w" because if the properties' names in the file match,
+there will be only one pair in the Properties object with this name and with the last value specified for it. 
+We get null for the property named "key3" because this property does not exist in the file.
+
+23.
+What is the result of compiling and running the code below considering the contents of the base.properties file given?
+public class PropertiesQuest2 {
+    public static void main(String[] args) throws IOException {
+        Properties props = new Properties();
+        props.load(new FileReader("base.properties"));
+        Set<Object> set = props.keySet();
+        System.out.println(set.size());
+    
+    }
+}
+
+File base.properties
+key1=n
+key2=o
+key2=w
+key4=a
+key5=r
+4
+The file describes 5 properties, two of which have the same name—key2.
+When loading the properties file, there will only be four elements in the Properties object because the internal properties are stored as a hash table, 
+which does not allow duplicate keys.
+
 
