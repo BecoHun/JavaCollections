@@ -321,4 +321,76 @@ The file describes 5 properties, two of which have the same name—key2.
 When loading the properties file, there will only be four elements in the Properties object because the internal properties are stored as a hash table, 
 which does not allow duplicate keys.
 
+24.
+Which interface implemented in TreeSet<E> will allow for natural element ordering?
+java.lang.Comparable
+The implementation of the Comparable<T> interface by classes allows you to define a natural sort order for them. This interface is located in the java.lang package.
+
+25.
+Which of the following methods does the Comparable<T> interface define? 
+compareTo
+The Comparable<T> interface has one abstract method defined—compareTo().
+
+26.
+What will be the result of executing the following code?
+import java.util.*;
+public class ComparatorQues1 {
+    public static void main(String[] args) {
+        ArrayList<Integer> arrayList = new ArrayList<>();
+        arrayList.add(20);
+        arrayList.add(10);
+        arrayList.add(30);
+        arrayList.add(0);
+        arrayList.sort(new Comparator<Integer>() {
+                @Override
+                public int compare(Integer o1, Integer o2) {
+                    return o2 - o1;
+                }
+        });
+        System.out.println(arrayList);
+    }
+}
+[30, 20, 10, 0]
+The Integer class implements the Comparable<T> interface and defines a natural ascending sort order. 
+To define reverse sorting, the Compataror<T> interface is used. It is implemented through an anonymous class.
+
+27.
+What will be the result of executing the following code?
+import java.util.*;
+public class Student {
+    private String name;
+    private int group;
+    public Student(String name, int group) {
+        if (name == null> || group <= 0) {
+            throw new IllegalArgumentException();
+        }
+        this.name = name;
+        this.group = group;
+    }
+    public String toString() {
+        return "Student: name=" + name + " group=" + group;
+    }
+    public int compareTo(Student o) {
+        int groupCmp = this.group - o.group;
+        return (groupCmp != 0) ? groupCmp : this.name.compareTo(o.name);
+    }
+}
+
+public class StudentComparableQues2 {
+    public static void main(String[] args) {
+    Student[] students = {
+        new Student("Ivan", 501),
+        new Student("Nina", 101),
+        new Student("Alex", 501),
+        new Student("Lilu", 301),
+        };
+        List<Student> list = Arrays.asList(students);
+        Collections.sort(list);
+        System.out.println(list);
+    }
+}
+Compilation fails
+The Student class does not implement the Comparable<T> interface as the compareTo() method is its own method. 
+So, the argument of the Collections.sort() method does not match and cannot be cast to the Comparable<T> type.
+
 
