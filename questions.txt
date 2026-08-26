@@ -393,4 +393,37 @@ Compilation fails
 The Student class does not implement the Comparable<T> interface as the compareTo() method is its own method. 
 So, the argument of the Collections.sort() method does not match and cannot be cast to the Comparable<T> type.
 
+28.
+Which statements about the Collections class are true? 
+The Collections class contains methods that wrap the specified collection and return a new one with certain features.
+The Collections class consists exclusively of static methods that operate on or return collections.
+The Collections class contains only static methods that implement various algorithms that process collections or wrap them in collections with certain properties. 
+Most of the methods are generic and work with any type of collection. 
+Also, all methods throw an exception of type NullPointerException if the collections or class objects provided to them are null.
+
+29.
+What statements about the Collections class methods are true?
+The sort() method implements a merge sort algorithm that has the stability property.
+The binarySearch() method works correctly only in an ordered list.
+The sort() method implements a merge sort algorithm that works steadily and has two forms for ordering: natural order and according to the passed comparator. 
+The binarySearch() method requires the collection to be ordered before executing it. Only the shuffle() method can be applied to lists.
+
+30.
+What will be the result of executing the following code?
+import java.util.*;
+public class CollectionsMethods {
+    public static void main (String[] args) {
+        List<Integer> list = new ArrayList<>();
+        Collections.addAll(list, 100, -100, 50, -50, 0);
+        Collections.sort(list);
+        Collections.swap(list, 3, 4);
+        int index = Collections.binarySearch(list, 50);
+        System.out.println(index);
+    } 
+}
+Unpredictable output
+The sort() method sorts the list of numbers in ascending order by default. Therefore, the value 50 will be in position 3. 
+However, after swapping this element with the one following it, the binarySearch() method will no longer work correctly and its result is unpredictable. 
+No errors occur because the method returns some negative value if the object it is looking for is not found.
+
 
